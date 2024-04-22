@@ -20,14 +20,20 @@ export default function Index() {
   return (
     <div className="flex items-center justify-center">
       <div className="flex flex-col  w-1/2 items-center justify-center">
-        {pokemonData.map((pokemon, index) => (
-          <PokemonCard
-            key={index}
-            id={pokemon.id}
-            name={pokemon.name}
-            types={pokemon.types}
-          />
-        ))}
+        {pokemonData.length > 0 ? (
+          pokemonData.map((pokemon, index) => (
+            <PokemonCard
+              key={index}
+              id={pokemon.id}
+              name={pokemon.name}
+              types={pokemon.types}
+            />
+          ))
+        ) : (
+          <h1 className="text-4xl text-gray-600">
+            You haven't added any Pokemons yet
+          </h1>
+        )}
       </div>
     </div>
   );
