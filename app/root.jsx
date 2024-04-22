@@ -5,6 +5,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import stylesheet from "/app/tailwind.css?url";
+import Nav from "/app/components/Nav";
+
+export const links = () => [{ rel: "stylesheet", href: stylesheet }];
 
 export function Layout({ children }) {
   return (
@@ -16,6 +20,7 @@ export function Layout({ children }) {
         <Links />
       </head>
       <body>
+        <Nav />
         {children}
         <ScrollRestoration />
         <Scripts />

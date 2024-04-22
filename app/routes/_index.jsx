@@ -1,39 +1,20 @@
+import PokemonCard from "../components/PokemonCard";
+
 export const meta = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Pokedex" },
+    { name: "A pokedex app", content: "Welcome to Pokedex!" },
   ];
 };
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div className="flex items-center justify-center">
+      <div className="flex flex-col  w-1/2 items-center justify-center">
+        <PokemonCard id="1" name="Bulbasaur" types={["fire", "flying"]}/>
+        <PokemonCard id="1" name="Bulbasaur" types={["fire", "flying"]}/>
+        <PokemonCard id="1" name="Bulbasaur" types={["fire", "flying"]}/>
+      </div>
     </div>
   );
 }
