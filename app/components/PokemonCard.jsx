@@ -33,7 +33,9 @@ const PokemonCard = ({ id, name, types }) => {
       </div>
       <div className="ml-10 flex w-2/4 flex-col justify-center items-start items-stretch">
         <div className="">
-          <span className="font-bold">{name}</span>
+          <span className="font-bold">
+            {name.charAt(0).toUpperCase() + name.slice(1)}
+          </span>
         </div>
         <div className="flex flex-row mt-10 items-center">
           {types.map((type) => (
