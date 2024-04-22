@@ -2,8 +2,19 @@ import Badge from "./TypeBadge";
 import { useEffect, useState } from "react";
 import { Link } from "@remix-run/react";
 import MoveCard from "./MoveCard";
+import StatBar from "./StatBar";
 
-const Pokemon = ({ name, exp, height, weight, id, skill, types, moves }) => {
+const Pokemon = ({
+  name,
+  exp,
+  height,
+  weight,
+  id,
+  skill,
+  types,
+  moves,
+  stats,
+}) => {
   const colors = {
     normal: "#a8a878",
     fire: "#f08030",
@@ -144,7 +155,13 @@ const Pokemon = ({ name, exp, height, weight, id, skill, types, moves }) => {
           </button>
         </div>
         <div className="w-full">
-          {activeTab === "stats" && <div>stats</div>}
+          {activeTab === "stats" && (
+            <div className="flex flex-col mt-10 items-center justify-center">
+              {stats.map((stat) => (
+                <StatBar content={stat} />
+              ))}
+            </div>
+          )}
           {activeTab === "moves" && (
             <div className="flex flex-row mt-10 items-center justify-center">
               {moves.map((move) => (
