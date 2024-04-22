@@ -12,12 +12,25 @@ const PokeAPIquery = `
 `;
 const client = new GraphQLClient("https://beta.pokeapi.co/graphql/v1beta");
 
+// Debounce function
+function debounce(func, delay) {
+  let timeoutId;
+  
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
 const Nav = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [pokemonData, setPokemonData] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const update = async () => {
+  // Debounced update function
+  const debouncedUpdate = debounce(async () => {
     try {
       const data = await client.request(PokeAPIquery, {
         searchQuery: searchQuery + "%",
@@ -27,7 +40,7 @@ const Nav = () => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, 300); // Adjust the delay as needed
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -35,7 +48,7 @@ const Nav = () => {
       setPokemonData([]);
       setShowDropdown(false);
     } else {
-      update();
+      debouncedUpdate(); // Call the debounced function
     }
   };
 
