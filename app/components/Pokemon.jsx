@@ -1,5 +1,6 @@
 import Badge from "./TypeBadge";
 import { useEffect, useState } from "react";
+import { Link } from "@remix-run/react";
 
 const Pokemon = ({ name, exp, height, weight, id, skill, types }) => {
   const colors = {
@@ -28,7 +29,7 @@ const Pokemon = ({ name, exp, height, weight, id, skill, types }) => {
   useEffect(() => {
     const existingCollection =
       JSON.parse(localStorage.getItem("pokemonCollection")) || [];
-    const isInCollection = existingCollection.some(p => p.id === id);
+    const isInCollection = existingCollection.some((p) => p.id === id);
     setIsInCollection(isInCollection);
   }, [id]);
 
@@ -68,9 +69,31 @@ const Pokemon = ({ name, exp, height, weight, id, skill, types }) => {
         />
       </div>
       <div className="flex flex-col w-2/4 text-left">
-        <h1 className="text-6xl font-bold">
-          {name.charAt(0).toUpperCase() + name.slice(1)}
-        </h1>
+        <div className="flex flex-row justify-between">
+          <h1 className="text-6xl font-bold">
+            {name.charAt(0).toUpperCase() + name.slice(1)}
+          </h1>
+          <div>
+            <Link to="/">
+              <button className="btn btn-circle btn-outline">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </Link>
+          </div>
+        </div>
         <div className="flex flex-col mt-10">
           <h2 className="text-2xl">Base Experience: {exp}</h2>
           <h2 className="text-2xl">Height: {height}</h2>
