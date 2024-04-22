@@ -22,9 +22,13 @@ export let loader = async ({ params }) => {
             name
           }
         }
+        pokemon_v2_pokemonmoves {
+          pokemon_v2_move {
+            name
+          }
+        }
       }
     }
-    
     `,
     { id: id }
   );
@@ -45,9 +49,17 @@ export default function PokemonDetails() {
     return <div>Loading...</div>;
   }
 
+  if (!pokemonData.pokemon_v2_pokemonmoves) {
+    return <div>Loading...</div>;
+  }
+
   const types = pokemonData.pokemon_v2_pokemontypes.map(
     (type) => type.pokemon_v2_type.name
   );
+
+  const moves = pokemonData.pokemon_v2_pokemonmoves.map(
+    (move) => move.pokemon_v2_move.name
+  )
 
   return (
     <div>
@@ -60,6 +72,7 @@ export default function PokemonDetails() {
         id={id}
         skills={"SKILLS"}
         types={types}
+        moves={moves}
       />
     </div>
   );
