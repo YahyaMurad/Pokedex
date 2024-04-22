@@ -11,7 +11,6 @@ export const meta = () => {
 export default function Index() {
   const [pokemonData, setPokemonData] = useState([]);
 
-  // Function to retrieve Pokémon data from localStorage
   useEffect(() => {
     const storedPokemon = JSON.parse(localStorage.getItem("pokemonCollection"));
     if (storedPokemon) {
@@ -21,13 +20,10 @@ export default function Index() {
   return (
     <div className="flex items-center justify-center">
       <div className="flex flex-col  w-1/2 items-center justify-center">
-        {/* <PokemonCard id="1" name="Bulbasaur" types={["fire", "flying"]}/>
-        <PokemonCard id="1" name="Bulbasaur" types={["fire", "flying"]}/>
-        <PokemonCard id="1" name="Bulbasaur" types={["fire", "flying"]}/> */}
         {pokemonData.map((pokemon, index) => (
           <PokemonCard
             key={index}
-            id={pokemon.id} // Assuming id is included in localStorage data
+            id={pokemon.id}
             name={pokemon.name}
             types={pokemon.types}
           />

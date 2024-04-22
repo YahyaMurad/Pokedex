@@ -1,4 +1,4 @@
-import Badge from "./Badge";
+import Badge from "./TypeBadge";
 import { useEffect, useState } from "react";
 
 const Pokemon = ({ name, exp, height, weight, id, skill, types }) => {
@@ -23,11 +23,9 @@ const Pokemon = ({ name, exp, height, weight, id, skill, types }) => {
     fairy: "#f0b6bc",
   };
 
-  // State to track whether the Pokémon is in the collection
   const [isInCollection, setIsInCollection] = useState(false);
 
   useEffect(() => {
-    // Check if the Pokémon is already in localStorage
     const existingCollection =
       JSON.parse(localStorage.getItem("pokemonCollection")) || [];
     const isInCollection = existingCollection.some(p => p.id === id);
@@ -35,7 +33,6 @@ const Pokemon = ({ name, exp, height, weight, id, skill, types }) => {
   }, [id]);
 
   const handleAddToCollection = () => {
-    // Create a JavaScript object representing the Pokémon
     const pokemon = {
       name,
       exp,
@@ -46,20 +43,16 @@ const Pokemon = ({ name, exp, height, weight, id, skill, types }) => {
       types,
     };
 
-    // Retrieve existing data from localStorage or initialize an empty array
     const existingCollection =
       JSON.parse(localStorage.getItem("pokemonCollection")) || [];
 
-    // Add the new Pokémon to the collection
     existingCollection.push(pokemon);
 
-    // Store the updated collection back into localStorage
     localStorage.setItem(
       "pokemonCollection",
       JSON.stringify(existingCollection)
     );
 
-    // Update state to reflect that the Pokémon is now in the collection
     setIsInCollection(true);
   };
 
@@ -92,7 +85,6 @@ const Pokemon = ({ name, exp, height, weight, id, skill, types }) => {
         </div>
         <div className="flex h-full">
           <div className="flex justify-end">
-            {/* Disable the button if the Pokémon is already in the collection */}
             <button
               className="btn self-end"
               onClick={handleAddToCollection}

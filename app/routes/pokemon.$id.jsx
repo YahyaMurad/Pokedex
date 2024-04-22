@@ -1,6 +1,5 @@
 import { json, useLoaderData } from "@remix-run/react";
 import { useParams } from "@remix-run/react";
-import { useState } from "react";
 import { GraphQLClient } from "graphql-request";
 import Pokemon from "../components/Pokemon";
 

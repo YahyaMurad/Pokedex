@@ -1,5 +1,4 @@
-import React from "react";
-import Badge from "./Badge";
+import Badge from "./TypeBadge";
 import { Link } from "@remix-run/react";
 
 const PokemonCard = ({ id, name, types }) => {
