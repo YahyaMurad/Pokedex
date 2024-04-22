@@ -28,8 +28,8 @@ const PokemonCard = ({ id, name, types }) => {
       <div className="h-full w-1/4 flex rounded-2xl justify-center">
         <img
           className="rounded-2xl w-full"
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/2.png"
-          alt=""
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/${id}.png`}
+          alt="POKEMON IMAGE"
         />
       </div>
       <div className="ml-10 flex w-2/4 flex-col justify-center items-start items-stretch">
